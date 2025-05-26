@@ -1,3 +1,9 @@
+def compatibility(name_one: str, name_two: str):
+    letter = calculate_letter(name_one, name_two)
+    compatibility = convert_result(letter)
+    return compatibility
+
+
 def calculate_letter(name_one: str, name_two: str):
     flames = ["S", "F", "L", "A", "M", "E"]
     letters_left = len(set(name_one + name_two))

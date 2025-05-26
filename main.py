@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from flames_calculator import *
+from flames_calculator import compatibility
 
 app = FastAPI()
 
@@ -11,4 +11,4 @@ def read_root():
 
 @app.get("/flames-game")
 def get_compatibility(name_one: str, name_two: str):
-    return convert_result(calculate_letter(name_one, name_two))
+    return compatibility(name_one, name_two)
