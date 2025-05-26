@@ -1,6 +1,5 @@
-from typing import Union
-
 from fastapi import FastAPI
+from flames_calculator import *
 
 app = FastAPI()
 
@@ -10,6 +9,6 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/flames-game")
+def get_compatibility(name_one: str, name_two: str):
+    return convert_result(calculate_letter(name_one, name_two))
