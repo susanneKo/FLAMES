@@ -1,9 +1,24 @@
 import { useState } from "react";
-import { Button, TextField } from "@equinor/eds-core-react";
+import { Button, TextField, Typography } from "@equinor/eds-core-react";
+import axios from "axios";
 
 function App() {
+    async function getUser() {
+        try {
+            const response = await axios.get("/flames-game", {
+                params: {
+                    name_one: name1,
+                    name_two: name2,
+                },
+            });
+            setComp(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
     const [name1, setName1] = useState("");
     const [name2, setName2] = useState("");
+    const [comp, setComp] = useState<string | undefined>(undefined);
 
     return (
         <div style={{ width: "20%" }}>
@@ -22,14 +37,13 @@ function App() {
                 style={{ marginBottom: "1rem" }}
             />
             <Button
-                onClick={() =>
-                    console.log(
-                        `calculating compatibility for ${name1} and ${name2}`
-                    )
-                }
+                onClick={() => {
+                    getUser();
+                }}
             >
                 Calculate
             </Button>
+            {comp && <Typography>{comp}</Typography>}
         </div>
     );
 }
