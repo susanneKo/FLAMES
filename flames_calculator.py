@@ -6,7 +6,7 @@ def compatibility(name_one: str, name_two: str):
 
 def calculate_letter(name_one: str, name_two: str):
     flames = ["S", "F", "L", "A", "M", "E"]
-    letters_left = len(set(name_one + name_two))
+    letters_left = len(set(name_one.lower() + name_two.lower()))
     count = 0
 
     for i in range(len(flames) - 1):
