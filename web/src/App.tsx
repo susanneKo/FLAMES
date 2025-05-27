@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Button, TextField } from "@equinor/eds-core-react";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [name1, setName1] = useState("");
+    const [name2, setName2] = useState("");
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            <TextField
+                label={"Name 1"}
+                id={"name1"}
+                value={name1}
+                onChange={(e: any) => setName1(e.target.value)}
+            />
+            <TextField
+                label={"Name 2"}
+                id={"name2"}
+                value={name2}
+                onChange={(e: any) => setName2(e.target.value)}
+            />
+            <div>
+                <Button
+                    onClick={() =>
+                        console.log(
+                            `calculating compatibility for ${name1} and ${name2}`
+                        )
+                    }
+                >
+                    Calculate
+                </Button>
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
